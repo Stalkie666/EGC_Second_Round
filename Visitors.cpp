@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
@@ -20,5 +21,7 @@ using namespace std;
 
 int main(){
 	cout << "Hello world" << endl;
+
+	assert( 2+2 == 4);
 	return 0;
 }
