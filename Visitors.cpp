@@ -42,10 +42,6 @@ bool loadVisitors(	char (&SeatsOccupacy)[15][20], const string & filename,int & 
 	return true;
 }
 
-//nezapomenout osetrit pripadne chyby na vstupu,
-//pozor na chybejici a prebivajici znaky, chybne znaky a dalsi kulisarny
-
-
 //#2
 //print hall occupancy
 void printVisitors(char (&SeatsOccupacy)[15][20]){
