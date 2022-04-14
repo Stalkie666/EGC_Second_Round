@@ -1,5 +1,6 @@
 #include <iostream>
-#include<fstream>
+#include <iomanip>
+#include <fstream>
 #include <cassert>
 
 using namespace std;
@@ -45,8 +46,8 @@ bool loadVisitors(	char (&SeatsOccupacy)[15][20], const string & filename,int & 
 //#2
 //print hall occupancy
 void printVisitors(char (&SeatsOccupacy)[15][20]){
-	cout << "Obvsazenost: " << endl;
 	for(int i = 0; i < 15; ++i){
+		cout << setw(2) << (i+1) << ".";
 		for(int j = 0; j < 20; ++j)
 			cout << SeatsOccupacy[i][j];
 		cout << endl;
@@ -56,9 +57,9 @@ void printVisitors(char (&SeatsOccupacy)[15][20]){
 //#3
 //profit from occuied seats
 void printProfit(int & VIPs,int & NormalVis){
-	cout << "Obsazeno beznych mist: " << NormalVis << ", celkova cena: " << (NormalVis*100) << ",-" << endl;
-	cout << "Obsazeno VIP mist:\t" << VIPs << ", celkova cena: " << (VIPs*150) << ",-" << endl;
-	cout << "Obsazeno celkem:\t" << (NormalVis+VIPs) << ", celkova cena: " << (NormalVis*100 + VIPs*150) << ",-" << endl;
+	cout << "Obsazeno beznych mist:  " << setw(3) << NormalVis << ", celkova cena: " << (NormalVis*100) << ",-" << endl;
+	cout << "Obsazeno VIP mist:\t" << setw(3) << VIPs << ", celkova cena: " << (VIPs*150) << ",-" << endl;
+	cout << "Obsazeno celkem:\t"  << setw(3) << (NormalVis+VIPs) << ", celkova cena: " << (NormalVis*100 + VIPs*150) << ",-" << endl;
 }
 
 //Visitors function
@@ -66,7 +67,10 @@ bool visitors(const string & filename){
 	char SeatsOccupacy [15][20] = {0};
 	int VIPVis = 0;
 	int NormalVis = 0;
-	if( !loadVisitors(SeatsOccupacy,filename,VIPVis,NormalVis) ) return false;
+	if( !loadVisitors(SeatsOccupacy,filename,VIPVis,NormalVis) ){
+		cout << "Nespravny vstup." << endl;
+		return false;
+	}
 	printVisitors(SeatsOccupacy);
 	printProfit(VIPVis,NormalVis);
 	return true;
