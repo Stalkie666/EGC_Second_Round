@@ -76,8 +76,19 @@ bool visitors(const string & filename){
 	return true;
 }
 
+//get name of file - added after deadline
+string GetFileName(){
+	string Filename;
+	cout << "Zadejte jmeno souboru:" << endl;
+	cin >> Filename;
+	return Filename;
+}
+
 
 int main(){
+	visitors(GetFileName());
+
+//testing more test data
 	assert( visitors("TestData//testovaci1.txt") == true);
 	assert( visitors("TestData//testovaci2.txt") == true);
 	assert( visitors("TestData//testovaci3.txt") == true);
@@ -85,6 +96,5 @@ int main(){
 	assert( visitors("TestData//testovaci5.txt") == false);
 	assert( visitors("TestData//testovaci6.txt") == false);
 	assert( visitors("TestData//testovaci7.txt") == false);
-
 	return 0;
 }
